@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "predeploy": "ng build --output-path docs --base-href /",
-    "deploy": "gh-pages -d docs -t $GITHUB_TOKEN"
+    "deploy": "gh-pages -d docs"
   },
   "prettier": {
     "printWidth": 100,

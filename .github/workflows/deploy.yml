@@ -26,6 +26,4 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Deploy
-        run: npm run deploy
-        env: 
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx gh-pages -d docs --repo https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/linusrenstroom/linusrenstroom.github.io.git

@@ -18,7 +18,7 @@ jobs:
 
       - run: npm ci
 
-      - run: ng build --configuration production --output-path docs --base-href /
+      - run: npx ng build --configuration production --output-path docs --base-href /
 
       - name: Set Git identity
         run: |

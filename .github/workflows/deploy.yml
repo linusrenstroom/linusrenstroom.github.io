@@ -26,4 +26,6 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Deploy
-        run: npx gh-pages -d docs --repo https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/linusrenstroom/linusrenstroom.github.io.git
+        run: npx gh-pages -d docs --repo https://<PAT_TOKEN>@github.com/linusrenstroom/linusrenstroom.github.io.git
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}

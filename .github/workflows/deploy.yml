@@ -3,29 +3,38 @@ name: Deploy Angular to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main  # Kör workflow när du pushar till main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+      # 1. Checka ut koden
       - uses: actions/checkout@v3
 
+      # 2. Installera Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      - run: npm ci
+      # 3. Installera dependencies
+      - name: Install dependencies
+        run: npm ci
 
-      - run: npx ng build --configuration production --output-path docs --base-href /
+      # 4. Bygg Angular till dist/
+      - name: Build Angular
+        run: npx ng build --configuration production
+        # Output hamnar i dist/first-ng-app
 
+      # 5. Sätt git identity
       - name: Set Git identity
         run: |
           git config --global user.name "Linus Renström"
           git config --global user.email "dinmail@example.com"
 
-      - name: Deploy
-        run: npx gh-pages -d docs --repo https://x-access-token:${{ env.PAT_TOKEN }}@github.com/linusrenstroom/linusrenstroom.github.io.git
+      # 6. Deploy med angular-cli-ghpages
+      - name: Deploy to GitHub Pages
+        run: npx angular-cli-ghpages --dir=dist/first-ng-app --repo https://x-access-token:${{ env.PAT_TOKEN }}@github.com/linusrenstroom/linusrenstroom.github.io.git
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}

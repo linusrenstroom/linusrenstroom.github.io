@@ -22,10 +22,8 @@ jobs:
 
       - name: Set Git identity
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "Linus Renström"
+          git config --global user.email "dinmail@example.com"
 
       - name: Deploy
-        run: npx gh-pages -d docs --repo https://<PAT_TOKEN>@github.com/linusrenstroom/linusrenstroom.github.io.git
-        env:
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: npx gh-pages -d docs --repo https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/linusrenstroom/linusrenstroom.github.io.git

@@ -21,6 +21,7 @@
           "options": {
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
+            "outputPath": "docs",
             "inlineStyleLanguage": "scss",
             "assets": [
               {
